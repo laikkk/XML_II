@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT oddzial (nazwa,adres,nr_wewnetrzny)>
+<!ATTLIST oddzial id_odzialu ID #REQUIRED >
+<!ELEMENT nazwa (#PCDATA)>
+<!ELEMENT adres (#PCDATA)>
+<!ELEMENT nr_wewnetrzny (#PCDATA)>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Szpital SYSTEM "Szpital.dtd">
+<?xml-stylesheet type="text/css" href="SzpitalStylesheet.css" ?>
+
+<Szpital>
+    <!-- id_odzialu moze byc tylko (hirurg|onkolog|pediatra|ginekolog) -->
+    <oddzial id_odzialu="hirurg">
+        <nazwa>Oddział hirurgii</nazwa>
+        <adres>Skorzydło Zachodnie</adres>
+        <nr_wewnetrzny>576400</nr_wewnetrzny><!-- nr_wew musi byc 6 cyfrowy -->
+    </oddzial>
+    <oddzial id_odzialu="onkolog">
+        <nazwa>Oddział onkologii</nazwa>
+        <adres>Skrzydło północne</adres>
+        <nr_wewnetrzny>088315</nr_wewnetrzny>
+    </oddzial>
+    <oddzial id_odzialu="pediatra">
+        <nazwa>Oddział pediatrii</nazwa>
+        <adres>Skrzydło Wschodnie</adres>
+        <nr_wewnetrzny>436345</nr_wewnetrzny>
+    </oddzial>
+    <oddzial id_odzialu="ginekolog">
+        <nazwa>Oddział ginekologii</nazwa>
+        <adres>Skrzydło południowe</adres>
+        <nr_wewnetrzny>564734</nr_wewnetrzny>
+    </oddzial>
+    <personel>
+        <dyrekcja>
+            <osoba tytul="dr. hab" pass="edek1" email="Szewczyk@wp.pl">
+                <imie>Jakub</imie>
+                <nazwisko>Nowak</nazwisko>
+                <nr_tel>152436634</nr_tel>               
+            </osoba>
+        </dyrekcja>
+        <lekarze>
+            <specjalizacja id="ginekolog">
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Joanna</imie>
+                    <nazwisko>Wróblewska</nazwisko>
+                    <nr_tel>523523323</nr_tel>               
+                </osoba>
+           
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Julia</imie>
+                    <nazwisko>Pietrzak</nazwisko>
+                    <nr_tel>767444245</nr_tel>               
+                </osoba>
+            </specjalizacja>
+            <specjalizacja id="onkolog">
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Rafał</imie>
+                    <nazwisko>Dudek</nazwisko>
+                    <nr_tel>34634573</nr_tel>               
+                </osoba>
+            </specjalizacja>
+            <specjalizacja id="pediatra">
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Piotr</imie>
+                    <nazwisko>Szewczyk</nazwisko>
+                    <nr_tel>54644421</nr_tel>               
+                </osoba>
+                <osoba pass="TaJnEHaSl" email="Mikolaj@wp.pl">
+                    <imie>Mikołaj</imie>
+                    <nazwisko>Zalewski</nazwisko>
+                    <nr_kom>5232321</nr_kom>               
+                </osoba>
+            </specjalizacja>
+<!--            test na id-->
+<!--            <specjalizacja id="ped">
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Piotr</imie>
+                    <nazwisko>Szewczyk</nazwisko>
+                    <nr_tel>54644421</nr_tel>               
+                </osoba>
+                <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                    <imie>Mikołaj</imie>
+                    <nazwisko>Zalewski</nazwisko>
+                    <nr_tel>5232321</nr_tel>               
+                </osoba>
+            </specjalizacja>-->
+        </lekarze>
+        <inni>
+            <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                <imie>Kacper</imie>
+                <nazwisko>Górski</nazwisko>
+                <nr_tel>66543341</nr_tel>               
+            </osoba>
+            <osoba pass="TaJnEHaSl" email="Szewczyk@wp.pl">
+                <imie>Wiktoria</imie>
+                <nazwisko>Zając</nazwisko>
+                <nr_tel>8877664</nr_tel>               
+            </osoba>
+        </inni>
+    </personel>
+    <pacjeci>
+        <osoba z_oddzialu="pediatra" 
+               pesel="92121000152"
+               adres="Gdańsk ul.Skośna 7"
+               data_ur="1992-10-10">
+            <imie>Pola</imie>
+            <nazwisko>Mateja</nazwisko>
+            <nr_tel>3113</nr_tel>               
+        </osoba>
+        <osoba z_oddzialu="pediatra" 
+               pesel="93121000152"
+               adres="Gdańsk ul.Górna 55"
+               data_ur="1993-10-10">
+            <imie>Damian</imie>
+            <nazwisko>Sikora</nazwisko>
+            <nr_tel>1534545756</nr_tel>               
+        </osoba>
+    </pacjeci>
+</Szpital>

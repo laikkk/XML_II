@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT osoba (%daneos;)>
+<!ATTLIST osoba z_oddzialu (%oddzialy;)    #IMPLIED
+                pesel      NMTOKEN  #IMPLIED
+                adres      NMTOKENS #IMPLIED
+                data_ur    CDATA    #IMPLIED
+                tytul      NMTOKENS #IMPLIED>
+

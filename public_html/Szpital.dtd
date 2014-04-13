@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % daneos "imie,nazwisko,nr_tel">
+<!ENTITY % oddzialy "hirurg|onkolog|pediatra|ginekolog">
+<!ENTITY % ODDZIAL SYSTEM "oddzial.dtd">
+<!ENTITY % OSOBA SYSTEM "osoba.dtd">
+
+
+<!ELEMENT Szpital (oddzial+,personel+,pacjeci*)>
+
+%ODDZIAL;
+%OSOBA;
+
+<!ELEMENT nr_tel (#PCDATA)>
+<!ELEMENT imie (#PCDATA)>
+<!ELEMENT nazwisko (#PCDATA)>
+
+<!ELEMENT personel (dyrekcja+,lekarze+,inni*)> 
+<!ELEMENT dyrekcja (osoba)>
+
+<!ELEMENT lekarze (specjalizacja+)>
+<!ELEMENT specjalizacja (osoba+)>
+<!ATTLIST specjalizacja id IDREF #REQUIRED >
+
+<!ELEMENT inni (osoba*)>
+<!ELEMENT pacjeci (osoba*)>

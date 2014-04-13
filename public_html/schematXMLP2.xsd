@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<xsd:schema version="1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    <xsd:element name="Szpital">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="oddzial" type="MOJoddzial" minOccurs="1"
+                             maxOccurs="unbounded" />
+                <xsd:element name="personel" type="MOJpersonel" minOccurs="1"
+                             maxOccurs="1" />
+                <xsd:element name="pacjeci" type="MOJpacjeci" minOccurs="1"
+                             maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    
+    <xsd:complexType name="MOJoddzial">
+        <xsd:sequence>
+            <xsd:element name="nazwa" type="xsd:string" />
+            <xsd:element name="adres" type="xsd:string" />
+            <xsd:element name="nr_wewnetrzny" type="MOJnr_wew" />
+        </xsd:sequence>
+        <!--        1. ID-->
+        <xsd:attribute name="id_odzialu" type="MOJid_odzial" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="MOJpersonel">
+        <xsd:all>
+            <xsd:element name="dyrekcja" type="MOJdyrekcja" />
+            <xsd:element name="lekarze" type="MOJlekarze" />
+            <xsd:element name="inni" type="MOJinni" />
+        </xsd:all>    
+    </xsd:complexType>
+    
+    <xsd:complexType name="MOJpacjeci">
+        <xsd:sequence>
+            <xsd:element name="osoba" type="typOsobapacjent" minOccurs="1"
+                         maxOccurs="unbounded" />
+        </xsd:sequence>    
+    </xsd:complexType>
+    
+    <xsd:complexType  name="MOJdyrekcja">  
+        <xsd:sequence>
+            <xsd:element name="osoba" type="typOsobadyrekcja" />     
+        </xsd:sequence>                    
+    </xsd:complexType >
+    
+    <xsd:complexType name="MOJlekarze"> 
+        <xsd:sequence>
+            <xsd:element name="specjalizacja" type="MOJspecjalizacja"  minOccurs="1"
+                         maxOccurs="unbounded" />  
+        </xsd:sequence>                       
+    </xsd:complexType>
+    
+    <xsd:complexType name="MOJinni"> 
+        <xsd:sequence>
+            <xsd:element name="osoba" type="typOsobalekarz"  minOccurs="1"
+                         maxOccurs="unbounded" />  
+        </xsd:sequence>                      
+    </xsd:complexType>
+    
+   
+    
+    
+    
+    <!--Typy -->
+    <xsd:complexType name="MOJspecjalizacja">
+        <xsd:sequence>
+            <xsd:element name="osoba" type="typOsobalekarz" minOccurs="1" maxOccurs="unbounded"/>          
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:IDREF" />                   
+    </xsd:complexType>
+    
+    <xsd:complexType name="MOJosoba">
+        <xsd:sequence>
+            <xsd:element name="imie" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nazwisko" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:choice>
+                <xsd:element name="nr_tel" type="xsd:int" />
+                <xsd:element name="nr_kom" type="xsd:int" />         
+            </xsd:choice>
+        </xsd:sequence>                            
+    </xsd:complexType>
+    
+    <xsd:complexType name="Mojtel">		
+        <xsd:choice>
+            <xsd:element name="nr_tel" type="xsd:int" />
+            <xsd:element name="nr_kom" type="xsd:int" />         
+        </xsd:choice>
+        <xsd:attribute name="id" type="xsd:ID"></xsd:attribute>
+    </xsd:complexType>
+        
+    <xsd:complexType name="typOsobadyrekcja">
+        <xsd:complexContent>
+            <xsd:extension base="MOJosoba">
+                <xsd:attribute name="tytul" type="xsd:string" />
+                <xsd:attribute name="pass" type="MOJpass" /> 
+                <xsd:attribute name="email" type="MOJemail" /> 
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="typOsobalekarz">
+        <xsd:complexContent>
+            <xsd:extension base="MOJosoba">                
+                <xsd:attribute name="pass" type="MOJpass" /> 
+                <xsd:attribute name="email" type="MOJemail" /> 
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    
+    <xsd:complexType name="typOsobapacjent">
+        <xsd:complexContent>
+            <xsd:extension base="MOJosoba">
+                <!--                1. IDREF-->
+                <xsd:attribute name="z_oddzialu" type="xsd:IDREF" /> 
+                <xsd:attribute name="pesel" type="xsd:string" />
+                <xsd:attribute name="adres" type="xsd:string" />
+                <xsd:attribute name="data_ur" type="xsd:date" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>   
+    
+        
+    <xsd:simpleType name="MOJdata_ur">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])"/><!-- /^ ... $ -->
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="MOJnr_wew">
+        <xsd:restriction base="xsd:string">
+            <xsd:length value="6"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="MOJid_odzial">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="(hirurg|onkolog|pediatra|ginekolog)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="MOJpass">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z]\w{3,14}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!-- 
+The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used
+    -->
+    <xsd:simpleType name="MOJemail">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[_A-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    
+    
+</xsd:schema>

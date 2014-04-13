@@ -1,0 +1,115 @@
+/* Cascade style sheet based on Szpital.dtd DTD */
+Szpital { 
+    font-family:"Open Sans",​Helvetica,​sans-serif;
+    display: block;
+    width:960px;
+    margin: auto;
+}
+
+oddzial { 
+    display: inline-block;
+    width: 236px;
+}
+oddzial[id_odzialu="hirurg"] { 
+    background: #1BA1E2;
+}
+oddzial[id_odzialu="onkolog"] { 
+    background:  #A4C400;
+}
+oddzial[id_odzialu="pediatra"] { 
+    background: #00ABA9;
+}
+oddzial[id_odzialu="ginekolog"] { 
+    background: #825A2C;
+}
+
+dyrekcja:before {  background: none repeat scroll 0 0 #008A00;
+                   content: "Dyrektor:";
+                   display: block;
+                   font-size: 24px;
+                   height: 2em;
+                   line-height: 2;
+                   margin-top: 10px;
+                   width: 960px; }
+dyrekcja { display: block;
+           background:#60A917;margin-bottom: 10px;}
+
+nazwa,adres,nr_wewnetrzny { display: block;
+        font-size: 18px;
+        font-weight: 300;
+        padding: 8px;
+        position: relative;
+        vertical-align: middle;
+}
+
+nr_wewnetrzny:before { content: "nr tel:"; }
+specjalizacja osoba { display: inline-block;
+                      background: #FAC761;
+                      color: black;
+}
+nr_tel:before{content: "nr tel:";}
+nr_tel { display: block; font-size: 12px; }
+imie { display: block }
+nazwisko { display: block }
+
+
+lekarze:before{
+    background: none repeat scroll 0 0 #FA6800;
+    content: "Lekarze:";
+}
+specjalizacja[id="ginekolog"]:before{
+    background: none repeat scroll 0 0 #F0A30A;
+    content: "Specjalizacja: Ginekolog";
+}
+specjalizacja[id="onkolog"]:before{
+    background: none repeat scroll 0 0 #F0A30A;
+    content: "Specjalizacja: Onkolog";
+}
+specjalizacja[id="pediatra"]:before{
+    background: none repeat scroll 0 0 #F0A30A;
+    content: "Specjalizacja: Pediatra";
+}
+specjalizacja[id="hirurg"]:before{
+    background: none repeat scroll 0 0 #F0A30A;
+    content: "Specjalizacja: hirurg";
+}
+inni:before{
+    background: none repeat scroll 0 0  #1BA1E2;
+    content: "Inni pracownicy";
+}
+
+inni osoba { 
+    background: #9EDFFF;
+}
+
+pacjeci:before { background: none repeat scroll 0 0 #60A917;
+                 content: "Pacjęci";
+}
+
+pacjeci osoba {
+    background: #A4C400;               
+}
+osoba:first-child{
+    margin-left: 0px;
+}
+osoba{
+    color: black;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+    height: 100px;
+    margin: 3px;
+    padding: 8px;
+    position: relative;
+    vertical-align: middle;
+    width: 100px;
+}
+inni:before,pacjeci:before,specjalizacja[id]:before,lekarze:before { 
+    display: block;
+    font-size: 24px;
+    height: 2em;
+    line-height: 2;
+}
+ inni > osoba:hover,pacjeci > osoba:hover,specjalizacja[id] > osoba:hover {
+    background:#EBFDFF; 
+}
